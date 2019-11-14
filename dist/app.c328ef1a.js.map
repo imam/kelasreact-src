@@ -1,1 +1,0 @@
-{"version":3,"sources":["belajar.js","app.js"],"names":["console","log","belajar"],"mappings":";;ACAA;;;;AAEAA,OAAO,CAACC,GAAR,CAAYC,GDFG,aCEf","file":"app.c328ef1a.js","sourceRoot":"..","sourcesContent":["export default 'Haloo'","import belajar from './belajar.js'\r\n\r\nconsole.log(belajar)"]}
