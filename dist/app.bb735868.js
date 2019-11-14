@@ -34624,7 +34624,14 @@ function (_Component) {
     _this.state = {
       name: null,
       age: null,
-      window: 'edit'
+      window: 'show',
+      students: [{
+        name: 'Imam'
+      }, {
+        name: 'John'
+      }, {
+        name: 'Harry'
+      }]
     };
     return _this;
   }
@@ -34669,7 +34676,9 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return _react.default.createElement("div", null, this.state.window === "show" && _react.default.createElement(_ShowSiswa.default, {
+      return _react.default.createElement("div", null, _react.default.createElement("div", null, this.state.students.map(function (student) {
+        return _react.default.createElement("div", null, student.name);
+      })), this.state.window === "show" && _react.default.createElement(_ShowSiswa.default, {
         name: this.state.name,
         age: this.state.age
       }), this.state.window === "edit" && _react.default.createElement(_EditSiswa.default, {
@@ -34730,7 +34739,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56383" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50279" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

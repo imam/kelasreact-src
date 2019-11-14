@@ -16,9 +16,9 @@ class EditSiswa extends Component{
   onSubmit = async () => {
     this.setState({submitting: true})
     const {data} = await axios.post('https://belajar-rest.herokuapp.com/v1/users/91', {name: this.state.name, age: this.state.age})
-	this.setState({submitting: false})
-	this.props.onNameChange(data.name)
-	this.props.onAgeChange(data.age)
+  	this.setState({submitting: false})
+  	this.props.onNameChange(data.name)
+  	this.props.onAgeChange(data.age)
   }
   
   changeName = (event) =>{

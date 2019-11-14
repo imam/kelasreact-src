@@ -6,7 +6,12 @@ import ShowSiswa from './ShowSiswa'
 class Siswa extends Component{
   constructor(props){
     super(props)
-    this.state = {name : null, age: null, window: 'edit'}
+    this.state = {
+      name : null, 
+      age: null, 
+      window: 'show',
+      students: [{name: 'Imam'}, {name: 'John'}, {name: 'Harry'}]
+    }
   }
   
   async componentDidMount() {
@@ -32,6 +37,9 @@ class Siswa extends Component{
   
   render() {
     return <div>
+      <div>
+        {this.state.students.map(student => <div>{student.name}</div>)}
+      </div>
       {this.state.window === "show" && <ShowSiswa name={this.state.name} age={this.state.age} />}
       {this.state.window === "edit" && <EditSiswa onNameChange={this.setName} onAgeChange={this.setAge}/>}
       {this.state.window !== "edit" && <button onClick={this.changeWindowToEdit}>Edit User</button>}
