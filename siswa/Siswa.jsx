@@ -1,4 +1,10 @@
 import React, {Component} from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import axios from 'axios'
 import EditSiswa from './EditSiswa'
 import ShowSiswa from './ShowSiswa'
@@ -12,12 +18,7 @@ class Siswa extends Component{
       window: 'show',
       students: [{name: 'Imam'}, {name: 'John'}, {name: 'Harry'}]
     }
-  }
-  
-  async componentDidMount() {
-    const {data} = await axios.get('https://belajar-rest.herokuapp.com/v1/users/91')
-	this.setState({name: data.name, age: data.age})
-  }
+  }  
   
   changeWindowToEdit = () => {
     this.setState({window: 'edit'})
@@ -34,17 +35,23 @@ class Siswa extends Component{
   setAge = (age) => {
     this.setState({age: age})
   }
-  
+
   render() {
-    return <div>
-      <div>
-        {this.state.students.map(student => <div>{student.name}</div>)}
-      </div>
-      {this.state.window === "show" && <ShowSiswa name={this.state.name} age={this.state.age} />}
-      {this.state.window === "edit" && <EditSiswa onNameChange={this.setName} onAgeChange={this.setAge}/>}
-      {this.state.window !== "edit" && <button onClick={this.changeWindowToEdit}>Edit User</button>}
-      {this.state.window !== "show" && <button onClick={this.changeWindowToShow}>Show User</button>}
-    </div>
+    window.cobaaja = this.props
+    return <Router>
+	    <div>
+	    	<Switch>
+	    		<Route path="/user/edit/:id" component={EditSiswa}>
+	    		</Route>
+	    		<Route path="/user/:id" component={ShowSiswa}>
+	    		</Route>
+	    		<Route path="/">
+	    			<div>Halo dunia!</div>
+	    			<Link to="/user">Show user</Link>
+	    		</Route>
+	    	</Switch>
+	    </div>
+    </Router>
   }
 }
 

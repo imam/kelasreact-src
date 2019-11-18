@@ -9,13 +9,13 @@ class EditSiswa extends Component{
   }
   
   async componentDidMount() {
-    const {data} = await axios.get('https://belajar-rest.herokuapp.com/v1/users/91')
+    const {data} = await axios.get('https://belajar-rest.herokuapp.com/v1/users/' + this.props.match.params.id)
     this.setState({name: data.name, age: data.age})
   }
   
   onSubmit = async () => {
     this.setState({submitting: true})
-    const {data} = await axios.post('https://belajar-rest.herokuapp.com/v1/users/91', {name: this.state.name, age: this.state.age})
+    const {data} = await axios.post('https://belajar-rest.herokuapp.com/v1/users/' + this.props.match.params.id, {name: this.state.name, age: this.state.age})
   	this.setState({submitting: false})
   	this.props.onNameChange(data.name)
   	this.props.onAgeChange(data.age)
