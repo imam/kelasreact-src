@@ -22,6 +22,7 @@ class ShowSiswa extends Component{
     return <div>
       <h1>{this.state.name ? this.state.name : 'Nama belum ada' }</h1>
       <div>{this.state.age ? this.state.age : 'Usia belum ada'}</div>
+      <Link to={"/user/"+ this.props.match.params.id +"/edit"}>Edit Siswa</Link>
     </div>
   }
 }

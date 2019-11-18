@@ -41,7 +41,7 @@ class Siswa extends Component{
     return <Router>
 	    <div>
 	    	<Switch>
-	    		<Route path="/user/edit/:id" component={EditSiswa}>
+	    		<Route path="/user/:id/edit" component={EditSiswa}>
 	    		</Route>
 	    		<Route path="/user/:id" component={ShowSiswa}>
 	    		</Route>
