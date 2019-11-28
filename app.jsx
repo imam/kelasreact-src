@@ -5,5 +5,12 @@ import axios from 'axios'
 
 //Local files
 import Siswa from './siswa/Siswa'
+import { Provider } from 'react-redux'
+import store from './redux/store'
+import actions from './redux/actions'
 
-render(<Siswa/>, document.getElementById('app'))
+window.store = store
+
+render(<Provider store={store}>
+		<Siswa/>
+	</Provider>, document.getElementById('app'))

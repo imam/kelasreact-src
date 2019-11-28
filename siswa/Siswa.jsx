@@ -6,8 +6,18 @@ import {
   Link
 } from "react-router-dom";
 import axios from 'axios'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import EditSiswa from './EditSiswa'
 import ShowSiswa from './ShowSiswa'
+import {
+  Navbar,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  NavbarText
+} from 'reactstrap'
+import { connect } from 'react-redux'
 
 class Siswa extends Component{
   constructor(props){
@@ -37,9 +47,9 @@ class Siswa extends Component{
   }
 
   render() {
-    window.cobaaja = this.props
     return <Router>
 	    <div>
+        <div>Halo, {this.props.user && this.props.user.name}</div>      
 	    	<Switch>
 	    		<Route path="/user/:id/edit" component={EditSiswa}>
 	    		</Route>
@@ -47,7 +57,7 @@ class Siswa extends Component{
 	    		</Route>
 	    		<Route path="/">
 	    			<div>Halo dunia!</div>
-	    			<Link to="/user">Show user</Link>
+	    			<Link to="/user/12">Show user</Link>
 	    		</Route>
 	    	</Switch>
 	    </div>
@@ -55,4 +65,7 @@ class Siswa extends Component{
   }
 }
 
-module.exports = Siswa
+module.exports = connect(
+  (state) => {
+    return {user: state.user}
+  })(Siswa)
